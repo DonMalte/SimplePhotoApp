@@ -19,6 +19,8 @@
 		E97D02CE25E5748F007AAD4C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02CD25E5748F007AAD4C /* NetworkError.swift */; };
 		E97D02D125E65517007AAD4C /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02D025E65517007AAD4C /* AlbumCell.swift */; };
 		E97D02D925E6709C007AAD4C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02D825E6709C007AAD4C /* Photo.swift */; };
+		E97D02E025E6933C007AAD4C /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02DF25E6933C007AAD4C /* PhotoCollectionViewController.swift */; };
+		E97D02E325E69379007AAD4C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02E225E69379007AAD4C /* PhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		E97D02CD25E5748F007AAD4C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		E97D02D025E65517007AAD4C /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		E97D02D825E6709C007AAD4C /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E97D02DF25E6933C007AAD4C /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		E97D02E225E69379007AAD4C /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				E97D02C425E57040007AAD4C /* AlbumCollectionViewController.swift */,
+				E97D02DF25E6933C007AAD4C /* PhotoCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E97D02D025E65517007AAD4C /* AlbumCell.swift */,
+				E97D02E225E69379007AAD4C /* PhotoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -264,7 +270,9 @@
 				E97D02C525E57040007AAD4C /* AlbumCollectionViewController.swift in Sources */,
 				E97D02A925E56D1F007AAD4C /* AppDelegate.swift in Sources */,
 				E97D02C825E571BD007AAD4C /* Network.swift in Sources */,
+				E97D02E025E6933C007AAD4C /* PhotoCollectionViewController.swift in Sources */,
 				E97D02D125E65517007AAD4C /* AlbumCell.swift in Sources */,
+				E97D02E325E69379007AAD4C /* PhotoCell.swift in Sources */,
 				E97D02CE25E5748F007AAD4C /* NetworkError.swift in Sources */,
 				E97D02AB25E56D1F007AAD4C /* SceneDelegate.swift in Sources */,
 				E97D02CB25E57455007AAD4C /* Album.swift in Sources */,

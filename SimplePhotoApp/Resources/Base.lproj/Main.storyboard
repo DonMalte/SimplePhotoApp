@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RkY-jK-OAn">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Albums-->
+        <scene sceneID="MWo-IP-tYb">
+            <objects>
+                <collectionViewController id="10c-QQ-7lh" customClass="AlbumCollectionViewController" customModule="SimplePhotoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VdL-1n-nxA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="ppG-7f-HTS">
+                            <size key="itemSize" width="158" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="albumCell" id="7xd-s6-rCo" customClass="AlbumCell" customModule="SimplePhotoApp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="158" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JNJ-JY-BZU">
+                                    <rect key="frame" x="0.0" y="0.0" width="158" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b5b-kt-Jqa">
+                                            <rect key="frame" x="0.0" y="0.0" width="158" height="158"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="b5b-kt-Jqa" secondAttribute="height" id="XMO-yN-kfK"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="UhL-E6-6du">
+                                            <rect key="frame" x="0.0" y="163" width="158" height="32"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="b5b-kt-Jqa" firstAttribute="leading" secondItem="JNJ-JY-BZU" secondAttribute="leading" id="DBc-WR-0Op"/>
+                                        <constraint firstItem="UhL-E6-6du" firstAttribute="leading" secondItem="JNJ-JY-BZU" secondAttribute="leading" id="Da3-Xj-sPN"/>
+                                        <constraint firstItem="b5b-kt-Jqa" firstAttribute="top" secondItem="JNJ-JY-BZU" secondAttribute="top" id="ViI-dc-puN"/>
+                                        <constraint firstAttribute="trailing" secondItem="UhL-E6-6du" secondAttribute="trailing" id="ZdG-a7-lHE"/>
+                                        <constraint firstAttribute="trailing" secondItem="b5b-kt-Jqa" secondAttribute="trailing" id="k3b-rB-lNG"/>
+                                        <constraint firstAttribute="bottom" secondItem="UhL-E6-6du" secondAttribute="bottom" constant="5" id="sYV-Wj-FZ9"/>
+                                        <constraint firstItem="UhL-E6-6du" firstAttribute="top" secondItem="b5b-kt-Jqa" secondAttribute="bottom" constant="5" id="wUO-gu-xW2"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="158" height="200"/>
+                                <connections>
+                                    <outlet property="albumCellImageView" destination="b5b-kt-Jqa" id="Cs4-wE-j6u"/>
+                                    <outlet property="albumCellTitleLabel" destination="UhL-E6-6du" id="hQT-xZ-siK"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="10c-QQ-7lh" id="1XY-Yw-iuy"/>
+                            <outlet property="delegate" destination="10c-QQ-7lh" id="R22-Tq-jfQ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="My Albums" id="6mV-QE-Bp1"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xfs-I5-ehG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618.840579710145" y="99.776785714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cXJ-eB-dNF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RkY-jK-OAn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="6fo-a0-c71">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="10c-QQ-7lh" kind="relationship" relationship="rootViewController" id="I2c-ew-QH4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Mr-qZ-hsp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711.59420289855075" y="99.776785714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

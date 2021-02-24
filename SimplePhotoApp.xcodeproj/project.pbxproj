@@ -21,6 +21,7 @@
 		E97D02D925E6709C007AAD4C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02D825E6709C007AAD4C /* Photo.swift */; };
 		E97D02E025E6933C007AAD4C /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02DF25E6933C007AAD4C /* PhotoCollectionViewController.swift */; };
 		E97D02E325E69379007AAD4C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02E225E69379007AAD4C /* PhotoCell.swift */; };
+		E97D02E825E6C272007AAD4C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02E725E6C272007AAD4C /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		E97D02D825E6709C007AAD4C /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		E97D02DF25E6933C007AAD4C /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		E97D02E225E69379007AAD4C /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		E97D02E725E6C272007AAD4C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			children = (
 				E97D02C425E57040007AAD4C /* AlbumCollectionViewController.swift */,
 				E97D02DF25E6933C007AAD4C /* PhotoCollectionViewController.swift */,
+				E97D02E725E6C272007AAD4C /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97D02E825E6C272007AAD4C /* DetailViewController.swift in Sources */,
 				E97D02D925E6709C007AAD4C /* Photo.swift in Sources */,
 				E97D02C525E57040007AAD4C /* AlbumCollectionViewController.swift in Sources */,
 				E97D02A925E56D1F007AAD4C /* AppDelegate.swift in Sources */,

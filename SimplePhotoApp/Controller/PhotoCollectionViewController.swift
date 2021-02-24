@@ -8,6 +8,7 @@
 import UIKit
 
 private let photoCellReuseIdentifier = "photoCell"
+private let toDetailViewSegueIdentifier = "toDetailViewSegue"
 
 class PhotoCollectionViewController: UICollectionViewController {
 
@@ -18,6 +19,18 @@ class PhotoCollectionViewController: UICollectionViewController {
 
         //The title of the navigationItem is set in the prepare(for segue) function in the previous AlbumCollectionViewController
         
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //Move to DetailViewController and pass on the selected photo
+        if segue.identifier == toDetailViewSegueIdentifier {
+            if let photo = sender as? Photo, let detailVC = segue.destination as? DetailViewController {
+                detailVC.photo = photo
+            }
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -46,15 +59,18 @@ class PhotoCollectionViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let photo = photos[indexPath.item]
+        let photo = photos[indexPath.item]
         
-        
+        performSegue(withIdentifier: toDetailViewSegueIdentifier, sender: photo)
     }
     
 }
 
 extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    //MARK: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

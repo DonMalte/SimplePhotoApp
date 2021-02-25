@@ -18,6 +18,8 @@ class PhotoCollectionViewController: UICollectionViewController {
     /// The photoZoomValue is equivalent to the numbers of images that are displayed in a row
     private var photoZoomValue: CGFloat = 2
     
+    private var pinchRecognizer: UIPinchGestureRecognizer?
+    
     //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +29,45 @@ class PhotoCollectionViewController: UICollectionViewController {
         //Add UIStepper for photo size control
         addStepperToView()
         
+        //Add pinchGestureRecognizer to change the photo size with a natural motion
+        pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchRecognized(sender:)))
+        self.view.addGestureRecognizer(pinchRecognizer!)
     }
     
     // MARK:- UIStepper
+    
+    @objc private func pinchRecognized(sender: UIPinchGestureRecognizer) {
+        
+        //If the recognizer.isEnabled state isn't checked before the sizeStepper is changed, the zoom would in-/decrease twofold
+        
+        if sender.scale >= 1.5 {
+        
+            if let recognizer = pinchRecognizer, recognizer.isEnabled {
+                changeSizeStepperAndLayout(increase: true)
+            }
+        } else if sender.scale <= 0.8 {
+            
+            if let recognizer = pinchRecognizer, recognizer.isEnabled {
+                changeSizeStepperAndLayout(increase: false)
+            }
+        }
+    }
+    
+    private func changeSizeStepperAndLayout(increase: Bool) {
+        if let recognizer = pinchRecognizer {
+            recognizer.isEnabled = false
+        }
+
+        if increase {
+            sizeStepper.value = sizeStepper.value+1
+        } else {
+            sizeStepper.value = sizeStepper.value-1
+        }
+        
+        //inform the view that the size of the photos should change
+        sizeStepperValueChanged(sender: sizeStepper)
+    }
+    
     
     @objc func sizeStepperValueChanged(sender: UIStepper) {
 
@@ -48,7 +86,13 @@ class PhotoCollectionViewController: UICollectionViewController {
         }
         
         // inform the collectionView to update the size of its cells
-        collectionView.performBatchUpdates(nil, completion: nil)
+        collectionView.performBatchUpdates(nil) { (_) in
+            if let recognizer = self.pinchRecognizer {
+                
+                // enable the recognizer again for the next pinch
+                recognizer.isEnabled = true
+            }
+        }
     }
     
     ///Add UIStepper to change the size of the displayed photos

@@ -12,10 +12,12 @@ private let photoSegueIdentifier = "toPhotoViewSegue"
 
 class AlbumCollectionViewController: UICollectionViewController {
     
+    //MARK:- Variables
     var albums = [Album]()
     
     let collectionViewSpacing: CGFloat = 20
 
+    //MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,7 +50,7 @@ class AlbumCollectionViewController: UICollectionViewController {
                 if let photoVC = segue.destination as? PhotoCollectionViewController {
                     if let photos = album.photos {
                         photoVC.photos = photos
-                        photoVC.navigationItem.title = album.title
+                        photoVC.albumTitle = album.title
                     }
                 }
             }
@@ -56,7 +58,7 @@ class AlbumCollectionViewController: UICollectionViewController {
     }
     
 
-    // MARK: UICollectionViewDataSource
+    // MARK:- UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
@@ -82,7 +84,7 @@ class AlbumCollectionViewController: UICollectionViewController {
         return UICollectionViewCell()
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK:- UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let album = albums[indexPath.item]
@@ -92,7 +94,10 @@ class AlbumCollectionViewController: UICollectionViewController {
 
 }
 
+// MARK:- Extensions
 extension AlbumCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    // MARK:- UICollectionViewFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

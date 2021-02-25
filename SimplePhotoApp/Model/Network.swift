@@ -9,6 +9,8 @@ import Foundation
 
 class Network {
     
+    //MARK:- Album functions
+    
     /// This function fetches albums from a website for pseudo JSON data.
     ///
     /// - Parameter completionHandler: Asynchrounious callback.
@@ -53,6 +55,8 @@ class Network {
             }.resume()
         }
     }
+    
+    //MARK:- Photo functions
     
     /// This function fetches photos from a specified album within a website that presents pseudo JSON data.
     ///

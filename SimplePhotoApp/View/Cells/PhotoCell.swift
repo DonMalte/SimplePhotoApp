@@ -9,8 +9,10 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     
+    //MARK:- IBOutlets
     @IBOutlet weak var photoCellImageView: UIImageView!
     
+    //MARK:- Variables
     ///Set the photo for it to be displayed in the cell
     var photo: Photo? {
         didSet {
@@ -22,6 +24,7 @@ class PhotoCell: UICollectionViewCell {
         }
     }
     
+    //MARK:- Cell Lifecycle
     override func prepareForReuse() {
         photoCellImageView.image = nil
     }

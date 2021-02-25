@@ -9,17 +9,21 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    //MARK:- IBOutlets
     @IBOutlet weak var detailViewTitleLabel: UILabel!
     @IBOutlet weak var detailViewImageView: UIImageView!
     
+    //MARK:- Variables
     var photo: Photo?
     
+    //MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         showPhoto()
     }
     
+    //MARK:- Photo functions
     //Show photo and title of the photo object
     private func showPhoto() {
         guard let photo = photo else {

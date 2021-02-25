@@ -10,9 +10,11 @@ import SDWebImage
 
 class AlbumCell: UICollectionViewCell {
     
+    //MARK:- IBOutlets
     @IBOutlet weak var albumCellImageView: UIImageView!
     @IBOutlet weak var albumCellTitleLabel: UILabel!
     
+    //MARK:- Variables
     var album: Album? {
         didSet {
             if let album = album {
@@ -27,6 +29,7 @@ class AlbumCell: UICollectionViewCell {
         }
     }
     
+    //MARK:- Photo functions
     ///set the thumnail picture from the first photo of the current album
     func setThumbnailPhoto(photos: [Photo]) {
         if let photo = photos.first {
@@ -48,6 +51,7 @@ class AlbumCell: UICollectionViewCell {
         }
     }
     
+    //MARK:- Cell lifecycle
     override func awakeFromNib() {
         albumCellImageView.layer.cornerRadius = 8
     }

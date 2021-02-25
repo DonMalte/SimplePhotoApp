@@ -12,8 +12,10 @@ private let toDetailViewSegueIdentifier = "toDetailViewSegue"
 
 class PhotoCollectionViewController: UICollectionViewController {
 
+    //MARK:- Class Properties
     var photos = [Photo]()
     
+    //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,9 @@ class PhotoCollectionViewController: UICollectionViewController {
         
     }
     
-    // MARK: - Navigation
+    // MARK:- UIStepper functions
+    
+    // MARK:- Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -33,7 +37,7 @@ class PhotoCollectionViewController: UICollectionViewController {
         }
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK:- UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
@@ -58,7 +62,7 @@ class PhotoCollectionViewController: UICollectionViewController {
         return UICollectionViewCell()
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK:- UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photo = photos[indexPath.item]
@@ -66,11 +70,16 @@ class PhotoCollectionViewController: UICollectionViewController {
         performSegue(withIdentifier: toDetailViewSegueIdentifier, sender: photo)
     }
     
+    // MARK:- UI Initialization
+    
+    //UIStepper
 }
+
+//MARK:- Extension
 
 extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
     
-    //MARK: UICollectionViewDelegateFlowLayout
+    //MARK:- UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

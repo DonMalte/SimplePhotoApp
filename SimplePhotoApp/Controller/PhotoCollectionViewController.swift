@@ -8,12 +8,16 @@
 import UIKit
 
 private let photoCellReuseIdentifier = "photoCell"
+private let headerReuseIdentifier = "photoCollectionViewHeader"
 private let toDetailViewSegueIdentifier = "toDetailViewSegue"
 
 class PhotoCollectionViewController: UICollectionViewController {
 
     //MARK:- Class Properties
     var photos = [Photo]()
+    
+    //Show the album title in the collectionView header
+    var albumTitle: String?
     
     /// The photoZoomValue is equivalent to the numbers of images that are displayed in a row
     private var photoZoomValue: CGFloat = 2
@@ -141,6 +145,22 @@ class PhotoCollectionViewController: UICollectionViewController {
         
         return UICollectionViewCell()
     }
+    
+    
+    //MARK: CollectionView Header
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as? PhotoCollectionViewHeader {
+            
+            if let title = albumTitle {
+                header.albumTitle = title
+            }
+            
+            return header
+        } else {
+            preconditionFailure("Couldn't dequeue the PhotoCollectionHeaderView")
+        }
+    }
 
     // MARK:- UICollectionViewDelegate
     
@@ -180,6 +200,20 @@ extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout {
         let width = (collectionView.frame.width-spacing)/photoZoomValue
         let size = CGSize(width: width, height: width)
         
+        return size
+    }
+    
+    //MARK: CollectionView Header Size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        let indexPath = IndexPath(row: 0, section: section)
+        let header = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+        
+        let targetSize = CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height)
+        
+        //Calculate the optimal height, as there isn't an easy way like UITableView.automaticDimension
+        let size = header.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+
         return size
     }
 }

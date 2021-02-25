@@ -50,7 +50,7 @@ class AlbumCollectionViewController: UICollectionViewController {
                 if let photoVC = segue.destination as? PhotoCollectionViewController {
                     if let photos = album.photos {
                         photoVC.photos = photos
-                        photoVC.navigationItem.title = album.title
+                        photoVC.albumTitle = album.title
                     }
                 }
             }

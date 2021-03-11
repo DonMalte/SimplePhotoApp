@@ -21,15 +21,17 @@ class AlbumCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        fetchAlbums()
+        //Fetch albums
+        getAlbums()
     }
     
-
-    private func fetchAlbums() {
+    //MARK:- Get Albums
+    private func getAlbums() {
         Network.getAlbumData { (albums, err) in
             if let error = err {
                 print("We have an error: \(error)")
+                
+                self.showNetworkAlert()
             } else {
                 if let albums = albums {
                     self.albums = albums
@@ -37,6 +39,18 @@ class AlbumCollectionViewController: UICollectionViewController {
                 }
             }
         }
+    }
+    
+    //MARK:- Handle Error
+    
+    /// Show an alert with a prompt to check the internet connection or get in touch with the developers.
+    private func showNetworkAlert() {
+        let alert = UIAlertController(title: "Something went wrong", message: "Please check your internet connection and try again. If the problem remains contact the developers. Thanks for your patience!", preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(OKAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
@@ -75,6 +89,7 @@ class AlbumCollectionViewController: UICollectionViewController {
             let album = albums[indexPath.item]
             
             cell.album = album
+            cell.delegate = self
             
             return cell
         }
@@ -107,3 +122,11 @@ extension AlbumCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension AlbumCollectionViewController: AlbumCellDelegate {
+   
+    func networkRequestFailed() {
+        
+        // Show an alert.
+        self.showNetworkAlert()
+    }
+}

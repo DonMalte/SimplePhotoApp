@@ -28,6 +28,7 @@ class AlbumCell: UICollectionViewCell {
             }
         }
     }
+    var delegate: AlbumCellDelegate?
     
     private let placeholderImage = UIImage(named: "placeholder")
     
@@ -38,6 +39,8 @@ class AlbumCell: UICollectionViewCell {
         Network.getPhotosForAlbum(albumId: albumId) { (photos, err) in
             if let error = err {
                 print("We have an error: \(error)")
+                
+                self.delegate?.networkRequestFailed()
                 self.setPlaceholderImage()
             } else if let photos = photos {
                 self.album?.photos = photos

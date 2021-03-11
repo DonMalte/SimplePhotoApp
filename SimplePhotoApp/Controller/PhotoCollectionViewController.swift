@@ -22,7 +22,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     /// The photoZoomValue is equivalent to the numbers of images that are displayed in a row
     private var photoZoomValue: CGFloat = 2
     
-    private var pinchRecognizer: UIPinchGestureRecognizer?
+    private lazy var pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchRecognized(sender:)))
     
     //MARK: View Lifecycle
     override func viewDidLoad() {
@@ -34,8 +34,7 @@ class PhotoCollectionViewController: UICollectionViewController {
         addStepperToView()
         
         //Add pinchGestureRecognizer to change the photo size with a natural motion
-        pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchRecognized(sender:)))
-        self.view.addGestureRecognizer(pinchRecognizer!)
+        self.view.addGestureRecognizer(pinchRecognizer)
     }
     
     // MARK:- UIStepper
@@ -46,21 +45,20 @@ class PhotoCollectionViewController: UICollectionViewController {
         
         if sender.scale >= 1.5 {
         
-            if let recognizer = pinchRecognizer, recognizer.isEnabled {
+            if pinchRecognizer.isEnabled {
                 changeSizeStepperAndLayout(increase: true)
             }
         } else if sender.scale <= 0.8 {
             
-            if let recognizer = pinchRecognizer, recognizer.isEnabled {
+            if pinchRecognizer.isEnabled {
                 changeSizeStepperAndLayout(increase: false)
             }
         }
     }
     
     private func changeSizeStepperAndLayout(increase: Bool) {
-        if let recognizer = pinchRecognizer {
-            recognizer.isEnabled = false
-        }
+        
+        pinchRecognizer.isEnabled = false
 
         if increase {
             sizeStepper.value = sizeStepper.value+1
@@ -73,7 +71,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     }
     
     
-    @objc func sizeStepperValueChanged(sender: UIStepper) {
+    @objc private func sizeStepperValueChanged(sender: UIStepper) {
 
         // revert the value of the stepper, otherwise it would feel less intuitive when somebody taps plus and the images get smaller
         switch sender.value {
@@ -91,11 +89,9 @@ class PhotoCollectionViewController: UICollectionViewController {
         
         // inform the collectionView to update the size of its cells
         collectionView.performBatchUpdates(nil) { (_) in
-            if let recognizer = self.pinchRecognizer {
-                
-                // enable the recognizer again for the next pinch
-                recognizer.isEnabled = true
-            }
+            
+            // enable the recognizer again for the next pinch
+            self.pinchRecognizer.isEnabled = true
         }
     }
     
@@ -104,8 +100,8 @@ class PhotoCollectionViewController: UICollectionViewController {
         
         self.view.addSubview(sizeStepper)
         NSLayoutConstraint.activate([
-            sizeStepper.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
-            sizeStepper.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30)
+            sizeStepper.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            sizeStepper.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
     
@@ -172,7 +168,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     
     // MARK:- UI Initialization
     
-    let sizeStepper: UIStepper = {
+    private let sizeStepper: UIStepper = {
         let stepper = UIStepper()
         stepper.translatesAutoresizingMaskIntoConstraints = false
         stepper.minimumValue = 1

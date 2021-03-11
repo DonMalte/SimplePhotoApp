@@ -23,6 +23,7 @@
 		E97D02E025E6933C007AAD4C /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02DF25E6933C007AAD4C /* PhotoCollectionViewController.swift */; };
 		E97D02E325E69379007AAD4C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02E225E69379007AAD4C /* PhotoCell.swift */; };
 		E97D02E825E6C272007AAD4C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97D02E725E6C272007AAD4C /* DetailViewController.swift */; };
+		E9FE46C825FA535800F4C973 /* AlbumCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FE46C725FA535800F4C973 /* AlbumCellDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		E97D02DF25E6933C007AAD4C /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		E97D02E225E69379007AAD4C /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		E97D02E725E6C272007AAD4C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		E9FE46C725FA535800F4C973 /* AlbumCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCellDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				E97D02CA25E57455007AAD4C /* Album.swift */,
 				E97D02CD25E5748F007AAD4C /* NetworkError.swift */,
 				E97D02D825E6709C007AAD4C /* Photo.swift */,
+				E9FE46C725FA535800F4C973 /* AlbumCellDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				E97D02A925E56D1F007AAD4C /* AppDelegate.swift in Sources */,
 				E97D02C825E571BD007AAD4C /* Network.swift in Sources */,
 				E97D02E025E6933C007AAD4C /* PhotoCollectionViewController.swift in Sources */,
+				E9FE46C825FA535800F4C973 /* AlbumCellDelegate.swift in Sources */,
 				E97D02D125E65517007AAD4C /* AlbumCell.swift in Sources */,
 				E97D02E325E69379007AAD4C /* PhotoCell.swift in Sources */,
 				E97D02CE25E5748F007AAD4C /* NetworkError.swift in Sources */,

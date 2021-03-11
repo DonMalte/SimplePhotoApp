@@ -28,27 +28,43 @@ class AlbumCell: UICollectionViewCell {
             }
         }
     }
+    var delegate: AlbumCellDelegate?
     
-    //MARK:- Photo functions
-    ///set the thumnail picture from the first photo of the current album
-    func setThumbnailPhoto(photos: [Photo]) {
-        if let photo = photos.first {
-            if let url = URL(string: photo.thumbnailUrl) {
-                self.albumCellImageView.sd_setImage(with: url, completed: nil)
-            }
-        }
-    }
+    private let placeholderImage = UIImage(named: "placeholder")
+    
+    //MARK:- Get Photo function
     
     /// Fetch the photos for the specified id to set the thumbnail image and for further selection later on
-    func getPhotosForAlbum(albumId: Int) {
+    private func getPhotosForAlbum(albumId: Int) {
         Network.getPhotosForAlbum(albumId: albumId) { (photos, err) in
             if let error = err {
                 print("We have an error: \(error)")
+                
+                self.delegate?.networkRequestFailed()
+                self.setPlaceholderImage()
             } else if let photos = photos {
                 self.album?.photos = photos
                 self.setThumbnailPhoto(photos: photos)
             }
         }
+    }
+    
+    //MARK:- Set Photo functions
+    ///set the thumnail picture from the first photo of the current album
+    private func setThumbnailPhoto(photos: [Photo]) {
+        if let photo = photos.first {
+            if let url = URL(string: photo.thumbnailUrl) {
+                self.albumCellImageView.sd_setImage(with: url, placeholderImage: placeholderImage, options: [], context: nil)
+            } else {
+                self.setPlaceholderImage()
+            }
+        } else {
+            setPlaceholderImage()
+        }
+    }
+    
+    private func setPlaceholderImage() {
+        self.albumCellImageView.image = UIImage(named: "placeholder")
     }
     
     //MARK:- Cell lifecycle

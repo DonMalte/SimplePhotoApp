@@ -33,9 +33,7 @@ class AlbumCollectionViewController: UICollectionViewController {
             } else {
                 if let albums = albums {
                     self.albums = albums
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
+                    self.collectionView.reloadData()
                 }
             }
         }

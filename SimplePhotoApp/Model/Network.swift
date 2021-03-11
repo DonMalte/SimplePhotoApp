@@ -19,6 +19,7 @@ class Network {
     static public func getAlbumData(completionHandler: @escaping ([Album]?, NetworkError?) -> Void) {
         
         getData(albumID: nil) { (data, networkError) in
+            
             DispatchQueue.main.async {
                 if let data = data {
                     
@@ -51,18 +52,21 @@ class Network {
     static public func getPhotosForAlbum(albumId: Int, completionHandler: @escaping ([Photo]?, NetworkError?) -> Void) {
         
         getData(albumID: albumId) { (data, networkError) in
-            if let data = data {
-
-                do {
-                    let photos = try JSONDecoder().decode([Photo].self, from: data)
-
-                    completionHandler(photos, nil)
-                } catch {
+            
+            DispatchQueue.main.async {
+                if let data = data {
                     
-                    completionHandler(nil, .fetchError)
+                    do {
+                        let photos = try JSONDecoder().decode([Photo].self, from: data)
+                        
+                        completionHandler(photos, nil)
+                    } catch {
+                        
+                        completionHandler(nil, .fetchError)
+                    }
+                } else {
+                    completionHandler(nil, networkError)
                 }
-            } else {
-                completionHandler(nil, networkError)
             }
         }
     }

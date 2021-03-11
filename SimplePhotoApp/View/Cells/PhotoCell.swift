@@ -18,10 +18,21 @@ class PhotoCell: UICollectionViewCell {
         didSet {
             if let photo = photo {
                 if let url = URL(string: photo.url) {
-                    photoCellImageView.sd_setImage(with: url, completed: nil)
+                    photoCellImageView.sd_setImage(with: url, placeholderImage: placeholderImage, options: [], context: nil)
+                } else {
+                    setPlaceholderImage()
                 }
+            } else {
+                setPlaceholderImage()
             }
         }
+    }
+    
+    private let placeholderImage = UIImage(named: "placeholder")
+    
+    //MARK:- Set Placeholder Image
+    private func setPlaceholderImage() {
+        photoCellImageView.image = placeholderImage
     }
     
     //MARK:- Cell Lifecycle

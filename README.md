@@ -11,4 +11,4 @@ Select an image to get to the full story of the shown square.
 
 🙏
 
-(The different branches are still up if somebody wants to check them out. The development branch has changes that were added later afterwards.
+(The different branches are still up if somebody wants to check them out. The development branch has changes that were added afterwards.

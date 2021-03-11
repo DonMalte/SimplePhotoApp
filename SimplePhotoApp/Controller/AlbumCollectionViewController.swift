@@ -13,9 +13,9 @@ private let photoSegueIdentifier = "toPhotoViewSegue"
 class AlbumCollectionViewController: UICollectionViewController {
     
     //MARK:- Variables
-    var albums = [Album]()
+    private var albums = [Album]()
     
-    let collectionViewSpacing: CGFloat = 20
+    private let collectionViewSpacing: CGFloat = 20
 
     //MARK:- View Lifecycle
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class AlbumCollectionViewController: UICollectionViewController {
     }
     
 
-    func fetchAlbums() {
+    private func fetchAlbums() {
         Network.getAlbumData { (albums, err) in
             if let error = err {
                 print("We have an error: \(error)")

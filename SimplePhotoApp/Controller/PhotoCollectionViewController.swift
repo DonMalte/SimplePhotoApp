@@ -73,7 +73,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     }
     
     
-    @objc func sizeStepperValueChanged(sender: UIStepper) {
+    @objc private func sizeStepperValueChanged(sender: UIStepper) {
 
         // revert the value of the stepper, otherwise it would feel less intuitive when somebody taps plus and the images get smaller
         switch sender.value {
@@ -172,7 +172,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     
     // MARK:- UI Initialization
     
-    let sizeStepper: UIStepper = {
+    private let sizeStepper: UIStepper = {
         let stepper = UIStepper()
         stepper.translatesAutoresizingMaskIntoConstraints = false
         stepper.minimumValue = 1

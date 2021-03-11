@@ -31,7 +31,7 @@ class AlbumCell: UICollectionViewCell {
     
     //MARK:- Photo functions
     ///set the thumnail picture from the first photo of the current album
-    func setThumbnailPhoto(photos: [Photo]) {
+    private func setThumbnailPhoto(photos: [Photo]) {
         if let photo = photos.first {
             if let url = URL(string: photo.thumbnailUrl) {
                 self.albumCellImageView.sd_setImage(with: url, completed: nil)
@@ -40,7 +40,7 @@ class AlbumCell: UICollectionViewCell {
     }
     
     /// Fetch the photos for the specified id to set the thumbnail image and for further selection later on
-    func getPhotosForAlbum(albumId: Int) {
+    private func getPhotosForAlbum(albumId: Int) {
         Network.getPhotosForAlbum(albumId: albumId) { (photos, err) in
             if let error = err {
                 print("We have an error: \(error)")

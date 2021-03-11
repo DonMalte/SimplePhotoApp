@@ -104,8 +104,8 @@ class PhotoCollectionViewController: UICollectionViewController {
         
         self.view.addSubview(sizeStepper)
         NSLayoutConstraint.activate([
-            sizeStepper.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
-            sizeStepper.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30)
+            sizeStepper.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            sizeStepper.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
     
